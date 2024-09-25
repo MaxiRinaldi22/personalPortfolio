@@ -32,13 +32,18 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
                 <img src={gitHubIcon} alt="GitHub Icon" className="h-12 w-12" />
               </button>
             </a>
-            <button className="rounded-full p-1 duration-300 hover:scale-125">
-              <img
-                src={linkedinIcon}
-                alt="Linkedin Icon"
-                className="h-12 w-12"
-              />
-            </button>
+            <a
+              href="
+            https://www.linkedin.com/in/maximiliano-rinaldi-41043732b/"
+            >
+              <button className="rounded-full p-1 duration-300 hover:scale-125">
+                <img
+                  src={linkedinIcon}
+                  alt="Linkedin Icon"
+                  className="h-12 w-12"
+                />
+              </button>
+            </a>
           </div>
           <button className="learn-more" onClick={toAboutMe}>
             <span className="circle" aria-hidden="true">
