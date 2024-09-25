@@ -35,6 +35,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
             <a
               href="
             https://www.linkedin.com/in/maximiliano-rinaldi-41043732b/"
+            target="_blank"
             >
               <button className="rounded-full p-1 duration-300 hover:scale-125">
                 <img
