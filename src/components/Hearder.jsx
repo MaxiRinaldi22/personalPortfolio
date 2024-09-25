@@ -95,7 +95,6 @@ function Header({ toAboutMe, toPorjects, toSkills, toContact }) {
         <DialogPanel className="fixed inset-y-0 right-0 z-10 h-72 w-full overflow-y-auto bg-[#20272F] px-9 py-5 pl-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
             <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
               <img alt="" src={logo} className="h-10 w-auto" />
             </a>
             <button
@@ -109,7 +108,7 @@ function Header({ toAboutMe, toPorjects, toSkills, toContact }) {
           </div>
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
-              <div>
+              <div onClick={() => setMobileMenuOpen(false)}>
                 <a
                   href="#"
                   className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-[#ca721f] hover:bg-[#171C22]"

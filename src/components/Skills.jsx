@@ -4,7 +4,7 @@ import Title from "./Title";
 
 const Skills = ({refprop}) => {
   return (
-    <section ref={refprop} className="bg-[#171C22] py-16 lg:flex lg:flex-col lg:gap-10">
+    <section ref={refprop} className="bg-[#171C22] pt-16 lg:flex lg:flex-col lg:gap-10">
       <Title text={"Skills"} />
       <div className="py-10">
         <div className="lg:gap-15 grid grid-cols-3 justify-center gap-12 px-16 lg:flex">
