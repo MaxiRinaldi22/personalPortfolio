@@ -41,8 +41,8 @@ function About({ refprop }) {
             </ul>
           </div>
           <a
-            href="/public/Maximiliano Rinaldi.pdf"
-            download="Maximiliano Rinaldi.pdf"
+            href="/Maximiliano_Rinaldi.pdf"
+            download="Maximiliano_Rinaldi.pdf"
           >
             <button className="flex w-44 items-center justify-center gap-2 rounded-lg bg-[#ca721f] px-5 py-1 font-semibold transition-transform duration-300 will-change-transform hover:scale-105">
               <img src={downloadIcon} alt="Download Icon" /> Download CV
