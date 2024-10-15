@@ -98,8 +98,6 @@ function Header({ toAboutMe, toPorjects, toSkills, toContact }) {
               <img alt="" src={logo} className="h-10 w-auto" />
             </a>
             <button
-              type="button"
-              onClick={() => setMobileMenuOpen(false)}
               className="-m-2.5 rounded-md text-white"
             >
               <span className="sr-only">Close menu</span>

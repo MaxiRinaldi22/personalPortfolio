@@ -2,8 +2,6 @@ import HTMLimg from "../assets/icons-skills/HTMLimg.svg";
 import CSSimg from "../assets/icons-skills/CSSimg.svg";
 import JavaScript from "../assets/icons-skills/JavaScript.svg";
 import Tailwind from "../assets/icons-skills/Tailwind.svg";
-
-
 import Git from "../assets/icons-skills/Git.svg";
 import github from "../assets/icons/github.svg";
 import React from "../assets/icons-skills/React.svg";
