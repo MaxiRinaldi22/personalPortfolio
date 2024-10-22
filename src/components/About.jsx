@@ -14,7 +14,7 @@ function About({ refprop }) {
         <img
           src={myPhoto}
           alt="My photo"
-          className="h-80 rounded-md object-cover mask-gradient"
+          className="h-80 rounded-md object-cover maskImage"
         />
 
         <div className="flex flex-col justify-between max-md:gap-2">

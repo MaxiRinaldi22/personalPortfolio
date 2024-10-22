@@ -36,7 +36,6 @@ export const SERVICES = [
     name: "GitHub",
     img: github,
   },
- 
 ];
 
 export const INFO = [
@@ -55,5 +54,23 @@ export const INFO = [
   {
     title: "Email",
     info: "Mrinaldi2204@gmail.com",
+  },
+];
+
+export const HEADER_DATA = [
+  {
+    title: "Home",
+  },
+  {
+    title: "About me",
+  },
+  {
+    title: "Skills",
+  },
+  {
+    title: "Projects",
+  },
+  {
+    title: "Contact",
   },
 ];

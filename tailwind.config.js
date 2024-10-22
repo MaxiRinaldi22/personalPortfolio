@@ -7,8 +7,8 @@ export default {
   plugins: [
     function ({ addUtilities }) {
       addUtilities({
-        ".mask-gradient": {
-          maskImage: "linear-gradient(#171C22 70%, transparent)",
+        ".maskImage": {
+          maskImage: "linear-gradient(#171C22 60%, transparent)",
         },
       });
     },
