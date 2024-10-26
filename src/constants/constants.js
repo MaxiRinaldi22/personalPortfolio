@@ -41,7 +41,7 @@ export const SERVICES = [
 export const INFO = [
   {
     title: "Birthday",
-    info: "Jun 4th, 2006",
+    info: "Jan 4th, 2006",
   },
   {
     title: "Age",
@@ -65,11 +65,12 @@ export const HEADER_DATA = [
     title: "About me",
   },
   {
-    title: "Skills",
-  },
-  {
     title: "Projects",
   },
+  {
+    title: "Skills",
+  },
+
   {
     title: "Contact",
   },
