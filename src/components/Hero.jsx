@@ -133,10 +133,22 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
 
       <svg
         ref={svgRef}
-        className="absolute bottom-0 opacity-0"
+        className="absolute bottom-0 opacity-0 hidden md:block"
         style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
         width="100%"
         height="250"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 30 Q 25 70 50 30 T 100 30 V100 H0 Z" fill="#171C22" />
+      </svg>
+      <svg
+        ref={svgRef}
+        className="absolute bottom-0 opacity-0 block md:hidden"
+        style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
+        width="100%"
+        height="200"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
