@@ -10,6 +10,74 @@ import arrow from "../assets/icons/arrow.svg";
 import Title from "./Title";
 import gitHub from "../assets/icons/github.svg";
 import { twMerge } from "tailwind-merge";
+import { useEffect } from "react";
+import animation from "../util/animation";
+
+function Projects({ refprop }) {
+  useEffect(() => {
+    animation();
+  }, []);
+
+  return (
+    <section
+      ref={refprop}
+      className="flex flex-col items-center justify-center gap-10 bg-[#171C22] px-16 lg:gap-20"
+    >
+      <Title text={"Projects"} />
+      <div className=" grid max-w-[725px] grid-cols-1 gap-5 md:grid-cols-[repeat(4,_1fr)] md:grid-rows-[repeat(2,_1fr)] md:gap-5">
+        <Card
+          className="md:col-span-3"
+          title={"Lucky mines"}
+          text={
+            "A game inspired by the popular mines game from the Stake casino. In this version, players must uncover tiles without hitting a mine to win. As they progress, they can choose to continue to increase their winnings or cash out with the accumulated prize."
+          }
+          link={"https://luckymines.vercel.app/"}
+          linkHub={"https://github.com/MaxiRinaldi22/lucky-mines"}
+          firstImg={luckyMines}
+          secondImg={headerLuckyMines}
+          components={["HTML", "CSS", "React"]}
+        />
+        <Card
+          className="md:col-start-4"
+          title={"Todo list"}
+          text={
+            "A simple and functional To-Do List application built using React. It allows users to add, edit, delete, and filter tasks by their completion status."
+          }
+          linkHub={"https://github.com/MaxiRinaldi22/todo-list"}
+          link={"https://todo-list-theta-silk.vercel.app/"}
+          firstImg={toDo}
+          secondImg={headerToDo}
+          components={["HTML", "CSS", "React"]}
+        />
+
+        <Card
+          className="md:row-start-2"
+          title={"Expence control"}
+          text={
+            "An 'Expense Control' project in React helps users manage their finances by tracking and limiting expenses within a defined budget."
+          }
+          linkHub={"https://github.com/MaxiRinaldi22/expenceControl"}
+          link={"https://github.com/MaxiRinaldi22"}
+          firstImg={logoExpence}
+          secondImg={headerExpence}
+          components={["HTML", "React", "Tailwind", "TypeScript"]}
+        />
+        <Card
+          className="md:col-span-3 md:row-start-2"
+          title={"Currency converter"}
+          text={
+            "A fast and intuitive web application built with React! This app helps you convert values between multiple currencies in real-time, ensuring you have the most up-to-date exchange rates."
+          }
+          linkHub={"https://github.com/MaxiRinaldi22/currencyConvertor"}
+          link={"https://currencyconvertor-black.vercel.app/"}
+          firstImg={currencyConvertor}
+          secondImg={headerCurrencyConvertor}
+          components={["HTML", "React", "Tailwind"]}
+        />
+      </div>
+    </section>
+  );
+}
 
 function Card({
   firstImg,
@@ -69,68 +137,6 @@ function Card({
             {tag}
           </div>
         ))}
-      </div>
-    </section>
-  );
-}
-
-function Projects({ refprop }) {
-  return (
-    <section
-      ref={refprop}
-      className="flex flex-col items-center justify-center gap-10 bg-[#171C22] px-16 lg:gap-20"
-    >
-      <Title text={"Projects"} />
-      <div className="grid max-w-[725px] grid-cols-1 gap-5 md:grid-cols-[repeat(4,_1fr)] md:grid-rows-[repeat(2,_1fr)] md:gap-5">
-        <Card
-          className="md:col-span-3"
-          title={"Lucky mines"}
-          text={
-            "A game inspired by the popular mines game from the Stake casino. In this version, players must uncover tiles without hitting a mine to win. As they progress, they can choose to continue to increase their winnings or cash out with the accumulated prize."
-          }
-          link={"https://luckymines.vercel.app/"}
-          linkHub={"https://github.com/MaxiRinaldi22/lucky-mines"}
-          firstImg={luckyMines}
-          secondImg={headerLuckyMines}
-          components={["HTML", "CSS", "React"]}
-        />
-        <Card
-          className="md:col-start-4"
-          title={"Todo list"}
-          text={
-            "A simple and functional To-Do List application built using React. It allows users to add, edit, delete, and filter tasks by their completion status."
-          }
-          linkHub={"https://github.com/MaxiRinaldi22/todo-list"}
-          link={"https://todo-list-theta-silk.vercel.app/"}
-          firstImg={toDo}
-          secondImg={headerToDo}
-          components={["HTML", "CSS", "React"]}
-        />
-
-        <Card
-          className="md:row-start-2"
-          title={"Expence control"}
-          text={
-            "An 'Expense Control' project in React helps users manage their finances by tracking and limiting expenses within a defined budget."
-          }
-          linkHub={"https://github.com/MaxiRinaldi22/expenceControl"}
-          link={"https://github.com/MaxiRinaldi22"}
-          firstImg={logoExpence}
-          secondImg={headerExpence}
-          components={["HTML", "React", "Tailwind", "TypeScript"]}
-        />
-        <Card
-          className="md:col-span-3 md:row-start-2"
-          title={"Currency converter"}
-          text={
-            "A fast and intuitive web application built with React! This app helps you convert values between multiple currencies in real-time, ensuring you have the most up-to-date exchange rates."
-          }
-          linkHub={"https://github.com/MaxiRinaldi22/currencyConvertor"}
-          link={"https://currencyconvertor-black.vercel.app/"}
-          firstImg={currencyConvertor}
-          secondImg={headerCurrencyConvertor}
-          components={["HTML", "React", "Tailwind"]}
-        />
       </div>
     </section>
   );

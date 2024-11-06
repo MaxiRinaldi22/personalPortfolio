@@ -1,4 +1,4 @@
-import { SERVICES } from "../constants/constants";
+import { SERVICES } from "../util/constants";
 import Title from "./Title";
 
 const Skills = ({ refprop }) => {

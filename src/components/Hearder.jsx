@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Dialog, DialogPanel, PopoverGroup } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../assets/images/logo.png";
-import { HEADER_DATA } from "../constants/constants";
+import { HEADER_DATA } from "../util/constants";
 
 function Header({ toAboutMe, toPorjects, toSkills, toContact }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);

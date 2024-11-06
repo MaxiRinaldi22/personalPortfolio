@@ -1,23 +1,30 @@
-import { INFO } from "../constants/constants";
+import { INFO } from "../util/constants";
 import downloadIcon from "../assets/icons/download.svg";
 import myPhoto from "../assets/images/my-photo.png";
 import Title from "./Title";
+import { useEffect } from "react";
+import animation from "../util/animation";
 
 function About({ refprop }) {
+  
+  useEffect(() => {
+    animation()
+  }, [])
+
   return (
     <section
       ref={refprop}
-      className="flex flex-col justify-around gap-6 bg-[#171C22] py-20 lg:gap-20"
+      className="flex flex-col justify-around gap-6 bg-[#171C22] py-20 lg:gap-20 "
     >
       <Title text={"About me"} />
       <div className="flex flex-col-reverse gap-6 px-16 md:flex-row md:justify-center">
         <img
           src={myPhoto}
           alt="My photo"
-          className="h-80 rounded-md object-cover maskImage"
+          className="h-80 rounded-md object-cover maskImage "
         />
 
-        <div className="flex flex-col justify-between max-md:gap-2">
+        <div className="flex flex-col justify-between max-md:gap-2 ">
           <p className="max-w-96 text-gray-400">
             I'm a self-taught frontend developer from Uruguay, skilled in
             JavaScript, React, HTML, CSS, and Tailwind. I enjoy building
