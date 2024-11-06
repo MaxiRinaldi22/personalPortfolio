@@ -10,6 +10,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
   const hiRef = useRef(null);
   const nameRef = useRef(null);
   const iconsRef = useRef(null);
+  const svgRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -65,6 +66,15 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
         ease: "power2.out",
       },
     );
+
+    gsap.to(svgRef.current, {
+      opacity: 1,
+
+      duration: 2,
+      delay: 4,
+      "clip-path": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+      ease: "power4.out",
+    });
   }, []);
 
   return (
@@ -78,7 +88,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
         toSkills={toSkills}
         toContact={toContact}
       />
-      <div className="flex h-[80vh] flex-col items-center justify-center gap-5">
+      <div className="relative flex h-screen flex-col items-center justify-center gap-5">
         <div className="flex flex-col text-center lg:flex-row lg:gap-4">
           <h2
             ref={hiRef}
@@ -120,6 +130,19 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
           </button>
         </div>
       </div>
+
+      <svg
+        ref={svgRef}
+        className="absolute bottom-0 opacity-0"
+        style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
+        width="100%"
+        height="250"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0 30 Q 25 70 50 30 T 100 30 V100 H0 Z" fill="#171C22" />
+      </svg>
     </section>
   );
 }
