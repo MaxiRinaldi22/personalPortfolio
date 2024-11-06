@@ -148,7 +148,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
         className="absolute bottom-0 opacity-0 block md:hidden"
         style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
         width="100%"
-        height="150"
+        height="200"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
