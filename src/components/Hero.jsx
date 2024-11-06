@@ -11,6 +11,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
   const nameRef = useRef(null);
   const iconsRef = useRef(null);
   const svgRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline();
@@ -67,6 +68,14 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
       },
     );
 
+    gsap.to(buttonRef.current, {
+      y: -5,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut",
+      duration: 0.5,
+    });
+
     gsap.to(svgRef.current, {
       opacity: 1,
       duration: 2,
@@ -78,7 +87,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
 
   return (
     <section
-      className="h-screen bg-cover bg-center"
+      className="bg-cover bg-center"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
       <Header
@@ -102,7 +111,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
             Maximiliano Rinaldi
           </h1>
         </div>
-        <div ref={iconsRef} className="flex gap-3">
+        <div ref={iconsRef} className="flex items-center gap-3">
           <a href="https://github.com/MaxiRinaldi22" target="_blank">
             <button className="rounded-full duration-300 hover:scale-125">
               <img src={gitHubIcon} alt="GitHub Icon" className="h-12 w-12" />
@@ -121,18 +130,34 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
             </button>
           </a>
 
-          <button className="learn-more" onClick={toAboutMe}>
+          <button className="learn-more hidden md:block" onClick={toAboutMe}>
             <span className="circle" aria-hidden="true">
               <span className="icon arrow"></span>
             </span>
             <span className="button-text">More Info</span>
+          </button>
+
+          <button
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-[#CA721F] md:hidden"
+            onClick={toAboutMe}
+            ref={buttonRef}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              width={32}
+              height={32}
+              fill="rgba(255,255,255,1)"
+            >
+              <path d="M11.9999 13.1714L16.9497 8.22168L18.3639 9.63589L11.9999 15.9999L5.63599 9.63589L7.0502 8.22168L11.9999 13.1714Z"></path>
+            </svg>
           </button>
         </div>
       </div>
 
       <svg
         ref={svgRef}
-        className="absolute opacity-0 bottom-0  h-[150px] md:h-[300px]"
+        className="absolute bottom-0 h-[150px] opacity-0 md:h-[300px]"
         style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
         width="100%"
         viewBox="0 0 100 100"
@@ -141,7 +166,6 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
       >
         <path d="M0 30 Q 25 70 50 30 T 100 30 V100 H0 Z" fill="#171C22" />
       </svg>
-     
     </section>
   );
 }
