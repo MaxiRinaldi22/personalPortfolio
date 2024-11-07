@@ -9,7 +9,7 @@ const Skills = ({ refprop }) => {
     >
       <Title text={"Skills"} />
       <div className="py-10">
-        <div className="lg:gap-15 grid grid-cols-3 justify-center gap-12 px-16 lg:flex">
+        <div className="lg:gap-15 grid grid-cols-3 justify-center gap-12 px-5 lg:flex">
           {SERVICES.map((service) => (
             <div
               key={service.name}

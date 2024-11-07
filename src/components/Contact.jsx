@@ -4,7 +4,7 @@ function Contanct({ refprop }) {
   return (
     <section
       ref={refprop}
-      className="flex flex-col items-center justify-center gap-8 bg-[#171C22] px-16 pb-20"
+      className="flex flex-col items-center justify-center gap-8 bg-[#171C22] px-5 pb-20"
     >
       <Title text={"Contact"} />
       <p className="max-w-96 text-center text-gray-400">

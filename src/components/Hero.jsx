@@ -157,7 +157,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
 
       <svg
         ref={svgRef}
-        className="absolute bottom-0 h-[150px] opacity-0 md:h-[300px]"
+        className="absolute bottom-0 h-[150px] opacity-1 md:h-[300px]"
         // style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
         width="100%"
         viewBox="0 0 100 100"

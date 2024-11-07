@@ -19,7 +19,7 @@ function Projects({ refprop }) {
   return (
     <section
       ref={refprop}
-      className="flex flex-col items-center justify-center gap-10 bg-[#171C22] px-16 lg:gap-20"
+      className="flex flex-col items-center justify-center gap-10 bg-[#171C22] px-5 lg:gap-20"
     >
       <Title text={"Projects"} />
       <div className=" grid max-w-[725px] grid-cols-1 gap-5 md:grid-cols-[repeat(4,_1fr)] md:grid-rows-[repeat(2,_1fr)] md:gap-5">

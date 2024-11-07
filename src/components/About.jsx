@@ -38,11 +38,11 @@ function About({ refprop }) {
       <div ref={titleRef}>
         <Title text={"About me"} />
       </div>
-      <div className="flex flex-col-reverse gap-6 px-16 md:flex-row md:justify-center">
+      <div className="flex flex-col-reverse gap-10 px-5 md:flex-row md:justify-center">
         <img
           src={myPhoto}
           alt="My photo"
-          className="h-80 rounded-md object-cover maskImage"
+          className="h-72 md:h-80 rounded-md object-contain maskImage"
         />
 
         <div className="flex flex-col justify-between max-md:gap-2">

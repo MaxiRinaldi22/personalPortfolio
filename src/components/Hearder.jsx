@@ -31,10 +31,10 @@ function Header({ toAboutMe, toPorjects, toSkills, toContact }) {
     >
       <nav
         aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex items-center justify-between px-5 py-5 pr-7 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <a href="#" className="-m-1.5">
+          <a href="#">
             <span className="sr-only">Your Company</span>
             <img alt="" src={logo} className="h-10 w-auto" />
           </a>
@@ -78,9 +78,9 @@ function Header({ toAboutMe, toPorjects, toSkills, toContact }) {
         className="lg:hidden"
       >
         <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 flex flex-col gap-6 z-10 h-80 w-full overflow-y-auto bg-[#20272F] px-9 py-5 pl-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel className="fixed inset-y-0 right-0 z-10 flex h-80 w-full flex-col gap-6 overflow-y-auto bg-[#20272F] px-9 py-5 pl-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between">
-            <a href="#" className="-m-1.5 p-1.5">
+            <a href="#">
               <img alt="" src={logo} className="h-10 w-auto" />
             </a>
             <button
