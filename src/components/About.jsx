@@ -15,6 +15,7 @@ function About({ refprop }) {
   const textRef = useRef(null);
   const imgRef = useRef(null);
   const lineRef = useRef(null);
+  const buttonRef = useRef(null);
 
   useEffect(() => {
     gsap.fromTo(
@@ -55,11 +56,11 @@ function About({ refprop }) {
 
     gsap.fromTo(
       imgRef.current,
-      { y: 150 },
+      { x: -200 },
       {
         opacity: 1,
-        y: 0,
-        duration: 2,
+        x: 0,
+        duration: 3,
         ease: "power4.out",
         scrollTrigger: {
           trigger: textRef.current,
@@ -95,6 +96,23 @@ function About({ refprop }) {
         stagger: 0.5,
         scrollTrigger: {
           trigger: dataRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+
+    gsap.fromTo(
+      buttonRef.current,
+      { x: 100, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        delay: 1.7,
+        duration: 0.6,
+        ease: "po.out",
+        scrollTrigger: {
+          trigger: buttonRef.current,
           start: "top 80%",
           toggleActions: "play none none none",
         },
@@ -141,7 +159,11 @@ function About({ refprop }) {
               ))}
             </ul>
           </div>
-          <a href="/Maximiliano_Rinaldi.pdf" download="Maximiliano_Rinaldi.pdf">
+          <a
+            href="/Maximiliano_Rinaldi.pdf"
+            ref={buttonRef}
+            download="Maximiliano_Rinaldi.pdf"
+          >
             <button className="flex w-44 items-center justify-center gap-2 rounded-lg bg-[#ca721f] px-5 py-1 font-semibold transition-transform duration-300 will-change-transform hover:scale-105">
               <img src={downloadIcon} alt="Download Icon" /> Download CV
             </button>
