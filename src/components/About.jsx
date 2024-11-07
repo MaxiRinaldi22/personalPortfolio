@@ -5,7 +5,6 @@ import Title from "./Title";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { data } from "autoprefixer";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -56,7 +55,7 @@ function About({ refprop }) {
 
     gsap.fromTo(
       imgRef.current,
-      { x: -200 },
+      { x: -300 },
       {
         opacity: 1,
         x: 0,
@@ -91,7 +90,7 @@ function About({ refprop }) {
       {
         x: 0,
         opacity: 1,
-        duration: 1.2,
+        duration: 1.1,
         ease: "bounce.out",
         stagger: 0.5,
         scrollTrigger: {

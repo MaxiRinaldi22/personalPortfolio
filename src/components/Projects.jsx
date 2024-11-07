@@ -10,21 +10,63 @@ import arrow from "../assets/icons/arrow.svg";
 import Title from "./Title";
 import gitHub from "../assets/icons/github.svg";
 import { twMerge } from "tailwind-merge";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollReveal from "scrollreveal";
 
-
+gsap.registerPlugin(ScrollTrigger);
 
 function Projects({ refprop }) {
+  const titleRef = useRef(null);
+  const cardRef = useRef([]);
 
+  useEffect(() => {
+    gsap.fromTo(
+      titleRef.current,
+      { y: -100, opacity: 0, rotate: -10 },
+      {
+        y: 0,
+        opacity: 1,
+        rotate: 0,
+        duration: 1.2,
+        ease: "bounce.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  }, []);
+
+  useEffect(() => {
+    ScrollReveal().reveal(".left-an", {
+      origin: "left",
+      distance: "150%",
+      duration: 2000,
+      delay: 200,
+    });
+
+    ScrollReveal().reveal(".right-an", {
+      origin: "right",
+      distance: "100%",
+      duration: 2000,
+      delay: 200,
+    });
+  }, []);
 
   return (
     <section
       ref={refprop}
       className="flex flex-col items-center justify-center gap-10 bg-[#171C22] px-5 lg:gap-20"
     >
-      <Title text={"Projects"} />
-      <div className=" grid max-w-[725px] grid-cols-1 gap-5 md:grid-cols-[repeat(4,_1fr)] md:grid-rows-[repeat(2,_1fr)] md:gap-5">
+      <div ref={titleRef}>
+        <Title text={"Projects"} />
+      </div>
+      <div className="grid max-w-[725px] grid-cols-1 gap-5 md:grid-cols-[repeat(4,_1fr)] md:grid-rows-[repeat(2,_1fr)] md:gap-5">
         <Card
-          className="md:col-span-3"
+          className="left-an md:col-span-3"
           title={"Lucky mines"}
           text={
             "A game inspired by the popular mines game from the Stake casino. In this version, players must uncover tiles without hitting a mine to win. As they progress, they can choose to continue to increase their winnings or cash out with the accumulated prize."
@@ -35,8 +77,9 @@ function Projects({ refprop }) {
           secondImg={headerLuckyMines}
           components={["HTML", "CSS", "React"]}
         />
+
         <Card
-          className="md:col-start-4"
+          className="right-an md:col-start-4"
           title={"Todo list"}
           text={
             "A simple and functional To-Do List application built using React. It allows users to add, edit, delete, and filter tasks by their completion status."
@@ -49,7 +92,7 @@ function Projects({ refprop }) {
         />
 
         <Card
-          className="md:row-start-2"
+          className="left-an md:row-start-2"
           title={"Expence control"}
           text={
             "An 'Expense Control' project in React helps users manage their finances by tracking and limiting expenses within a defined budget."
@@ -60,8 +103,9 @@ function Projects({ refprop }) {
           secondImg={headerExpence}
           components={["HTML", "React", "Tailwind", "TypeScript"]}
         />
+
         <Card
-          className="md:col-span-3 md:row-start-2"
+          className="right-an md:col-span-3 md:row-start-2"
           title={"Currency converter"}
           text={
             "A fast and intuitive web application built with React! This app helps you convert values between multiple currencies in real-time, ensuring you have the most up-to-date exchange rates."
