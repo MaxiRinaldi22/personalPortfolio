@@ -33,7 +33,7 @@ function About({ refprop }) {
   return (
     <section
       ref={refprop}
-      className="flex flex-col justify-around gap-6 bg-[#171C22] py-20 lg:gap-20"
+      className="flex flex-col justify-around gap-6 bg-[#171C22] py-20 lg:gap-20 border-2 border-blue-500"
     >
       <div ref={titleRef}>
         <Title text={"About me"} />

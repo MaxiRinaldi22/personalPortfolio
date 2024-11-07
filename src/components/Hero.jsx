@@ -76,18 +76,18 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
       duration: 0.5,
     });
 
-    // gsap.to(svgRef.current, {
-    //   opacity: 1,
-    //   duration: 2,
-    //   delay: 4,
-    //   "clip-path": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-    //   ease: "power4.out",
-    // });
+    gsap.to(svgRef.current, {
+      opacity: 1,
+      duration: 2,
+      delay: 4,
+      "clip-path": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+      ease: "power4.out",
+    });
   }, []);
 
   return (
     <section
-      className="bg-cover bg-center h-screen bg-no-repeat object-cover"
+      className="min-h-screen border-2 border-red-500"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
       <Header
@@ -158,7 +158,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
       <svg
         ref={svgRef}
         className="absolute bottom-0 h-[150px] opacity-1 md:h-[300px]"
-        // style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
+        style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
         width="100%"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
