@@ -2,29 +2,50 @@ import { INFO } from "../util/constants";
 import downloadIcon from "../assets/icons/download.svg";
 import myPhoto from "../assets/images/my-photo.png";
 import Title from "./Title";
-import { useEffect } from "react";
-import animation from "../util/animation";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function About({ refprop }) {
-  
-  useEffect(() => {
-    animation()
-  }, [])
+  const titleRef = useRef(null);
 
+  useEffect(() => {
+    gsap.fromTo(
+      titleRef.current,
+      { y: -100, opacity: 0, rotate: -10 },
+      {
+        y: 0,
+        opacity: 1,
+        rotate: 0,
+        duration: 1.2,
+        ease: "bounce.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  }, []);
+  
   return (
     <section
       ref={refprop}
-      className="flex flex-col justify-around gap-6 bg-[#171C22] py-20 lg:gap-20 "
+      className="flex flex-col justify-around gap-6 bg-[#171C22] py-20 lg:gap-20"
     >
-      <Title text={"About me"} />
+      <div ref={titleRef}>
+        <Title text={"About me"} />
+      </div>
       <div className="flex flex-col-reverse gap-6 px-16 md:flex-row md:justify-center">
         <img
           src={myPhoto}
           alt="My photo"
-          className="h-80 rounded-md object-cover maskImage "
+          className="h-80 rounded-md object-cover maskImage"
         />
 
-        <div className="flex flex-col justify-between max-md:gap-2 ">
+        <div className="flex flex-col justify-between max-md:gap-2">
           <p className="max-w-96 text-gray-400">
             I'm a self-taught frontend developer from Uruguay, skilled in
             JavaScript, React, HTML, CSS, and Tailwind. I enjoy building
@@ -47,10 +68,7 @@ function About({ refprop }) {
               ))}
             </ul>
           </div>
-          <a
-            href="/Maximiliano_Rinaldi.pdf"
-            download="Maximiliano_Rinaldi.pdf"
-          >
+          <a href="/Maximiliano_Rinaldi.pdf" download="Maximiliano_Rinaldi.pdf">
             <button className="flex w-44 items-center justify-center gap-2 rounded-lg bg-[#ca721f] px-5 py-1 font-semibold transition-transform duration-300 will-change-transform hover:scale-105">
               <img src={downloadIcon} alt="Download Icon" /> Download CV
             </button>

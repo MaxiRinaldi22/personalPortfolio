@@ -10,13 +10,11 @@ import arrow from "../assets/icons/arrow.svg";
 import Title from "./Title";
 import gitHub from "../assets/icons/github.svg";
 import { twMerge } from "tailwind-merge";
-import { useEffect } from "react";
-import animation from "../util/animation";
+
+
 
 function Projects({ refprop }) {
-  useEffect(() => {
-    animation();
-  }, []);
+
 
   return (
     <section
