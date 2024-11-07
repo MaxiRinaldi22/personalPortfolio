@@ -87,7 +87,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
 
   return (
     <section
-      className="h-screen bg-cover bg-center bg-no-repeat"
+      className="h-[95vh] shadow-xl md:h-screen bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
       <Header
