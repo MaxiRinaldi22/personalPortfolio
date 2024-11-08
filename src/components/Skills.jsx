@@ -76,7 +76,7 @@ const Skills = ({ refprop }) => {
             className="flex w-full flex-col items-center justify-center gap-3"
             ref={(el) => (dataRef.current[id] = el)}
           >
-            <h2 className="text-xl font-[300] text-white">B A S I C S</h2>
+            <h2 className="text-xl font-[300] text-white">{info.title}</h2>
             <div className="lg:gap-15 grid w-fit grid-cols-3 justify-center gap-12 rounded-lg border-b border-t border-[#26292e] bg-[#191e24] p-5 md:px-8 md:py-10 lg:flex">
               {info.info.map((service) => (
                 <div
