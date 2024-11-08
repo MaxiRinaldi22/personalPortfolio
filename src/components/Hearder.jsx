@@ -21,6 +21,8 @@ function Header({ refs }) {
     sectionRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
+
+  // Nose que tan necesario es tener estos handles.
   const handleHomeClick = (e) => {
     if (location === "home") {
       e.preventDefault();
@@ -28,6 +30,20 @@ function Header({ refs }) {
     setIsMenuOpen(false);
     setMobileMenuOpen(false);
   };
+
+  const handleProjectsClick = (e) => {
+    if (location === "projects") {
+      e.preventDefault();
+    }
+    setIsMenuOpen(false);
+    setMobileMenuOpen(false);
+  };
+
+  useEffect(() => {
+    if (location === "/projects") {
+      setIsMenuOpen(false);
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +72,7 @@ function Header({ refs }) {
           marginTop: 0,
         },
         {
-          marginTop: "170px",
+          marginTop: "155px",
           duration: 1,
           ease: "power3.out",
         },
@@ -65,7 +81,7 @@ function Header({ refs }) {
       gsap.fromTo(
         mobileProject.current,
         {
-          marginTop: "170px",
+          marginTop: "155px",
         },
         {
           marginTop: 0,
@@ -102,7 +118,9 @@ function Header({ refs }) {
         </div>
         <PopoverGroup className="hidden lg:flex lg:gap-x-12">
           <ul className="hidden lg:flex lg:gap-x-12">
-            <li className={`flex items-center ${location === "/projects" ? "pr-8" : ""}`}>
+            <li
+              className={`flex items-center ${location === "/projects" ? "pr-8" : ""}`}
+            >
               <Link to="/" onClick={handleHomeClick}>
                 <p className="text-xl font-semibold text-[#CB7220]">Home</p>
               </Link>
@@ -186,7 +204,7 @@ function Header({ refs }) {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div>
-                <ul className="pr-5">
+                <ul className="pr-5 flex flex-col gap-3">
                   <li className="flex items-center">
                     <Link to="/" className="w-full" onClick={handleHomeClick}>
                       <p className="text-xl font-semibold text-[#CB7220]">
@@ -248,7 +266,7 @@ function Header({ refs }) {
                     ref={mobileProject}
                     // className={`${isMenuOpen ? "mt-[170px]" : ""}`}
                   >
-                    <Link to="/projects">
+                    <Link to="/projects" onClick={handleProjectsClick}>
                       <p className="text-xl font-semibold text-[#CB7220]">
                         Projects
                       </p>
