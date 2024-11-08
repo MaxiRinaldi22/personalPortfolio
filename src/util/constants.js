@@ -11,7 +11,6 @@ import Figma from "../assets/icons-skills/Figma.svg";
 import Vercel from "../assets/icons-skills/Vercel.svg";
 import Vite from "../assets/icons-skills/Vite.svg";
 
-
 export const BASICS = [
   {
     name: "HTML",
@@ -32,7 +31,7 @@ export const BASICS = [
 ];
 
 export const FRAMEWORKS = [
- {
+  {
     name: "React",
     img: React,
   },
@@ -67,10 +66,8 @@ export const TOOLS = [
   {
     name: "Vite",
     img: Vite,
-  }
-]
-
-
+  },
+];
 
 export const INFO = [
   {
@@ -91,12 +88,9 @@ export const INFO = [
   },
 ];
 
-export const HEADER_DATA = [
+export const HOME_PARTS = [
   {
-    title: "Home",
-  },
-  {
-    title: "About me",
+    title: "About",
   },
   {
     title: "Projects",
@@ -104,7 +98,6 @@ export const HEADER_DATA = [
   {
     title: "Skills",
   },
-
   {
     title: "Contact",
   },

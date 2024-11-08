@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function About({ refprop }) {
+function About() {
   const titleRef = useRef(null);
   const dataRef = useRef([]);
   const textRef = useRef(null);
@@ -120,10 +120,7 @@ function About({ refprop }) {
   }, []);
 
   return (
-    <section
-      ref={refprop}
-      className="flex flex-col justify-around gap-6 bg-[#171C22] py-20 lg:gap-20"
-    >
+    <section id="about" className="flex flex-col justify-around gap-6 bg-[#171C22] py-20 lg:gap-20">
       <div ref={titleRef}>
         <Title text={"About me"} />
       </div>

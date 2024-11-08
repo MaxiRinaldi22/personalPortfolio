@@ -19,7 +19,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 function Projects({ refprop }) {
   const titleRef = useRef(null);
-  const cardRef = useRef([]);
 
   useEffect(() => {
     gsap.fromTo(

@@ -1,72 +1,89 @@
+import { useEffect, useRef } from "react";
 import backgroundImg from "../assets/images/fondo-main.png";
-import Header from "./Hearder";
 import gitHubIcon from "../assets/icons/github.svg";
 import linkedinIcon from "../assets/icons/linkedin.svg";
 import { gsap } from "gsap";
 import "../components/button.css";
-import { useEffect, useRef } from "react";
 
-function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
+function Hero({ aboutRef }) {
   const hiRef = useRef(null);
   const nameRef = useRef(null);
   const iconsRef = useRef(null);
   const svgRef = useRef(null);
   const buttonRef = useRef(null);
 
-  useEffect(() => {
-    const tl = gsap.timeline();
+  const hasSeenTheAnimation = sessionStorage.getItem("hasSeenTheAnimation");
 
-    gsap
-      .matchMedia()
-      .add("(min-width: 768px)", () => {
-        tl.fromTo(
-          hiRef.current,
-          { y: -300, opacity: 0, scale: 1, transformOrigin: "center center" },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            duration: 3,
-            fontSize: 60,
-            ease: "bounce.out",
-          },
-        ).fromTo(
-          nameRef.current,
-          { x: 200, opacity: 0, transformOrigin: "center center" },
-          { x: 0, opacity: 1, duration: 2, ease: "power4.out" },
-        );
-      })
-      .add("(max-width: 767px)", () => {
-        tl.fromTo(
-          hiRef.current,
-          { y: -300, opacity: 0, scale: 3, transformOrigin: "center center" },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 0.6,
-            duration: 3,
-            fontSize: 60,
-            ease: "bounce.out",
-          },
-        ).fromTo(
-          nameRef.current,
-          { x: 200, opacity: 0, transformOrigin: "center center" },
-          { x: 0, opacity: 1, duration: 2, ease: "power4.out" },
-        );
+  useEffect(() => {
+    if (!hasSeenTheAnimation) {
+      const tl = gsap.timeline();
+
+      gsap
+        .matchMedia()
+        .add("(min-width: 768px)", () => {
+          tl.fromTo(
+            hiRef.current,
+            { y: -300, opacity: 0, scale: 1, transformOrigin: "center center" },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 3,
+              fontSize: 60,
+              ease: "bounce.out",
+              repeat: false,
+            },
+          ).fromTo(
+            nameRef.current,
+            { x: 200, opacity: 0, transformOrigin: "center center" },
+            { x: 0, opacity: 1, duration: 2, ease: "power4.out" },
+          );
+        })
+        .add("(max-width: 767px)", () => {
+          tl.fromTo(
+            hiRef.current,
+            { y: -300, opacity: 0, scale: 3, transformOrigin: "center center" },
+            {
+              y: 0,
+              opacity: 1,
+              scale: 0.6,
+              duration: 3,
+              fontSize: 60,
+              repeat: false,
+              ease: "bounce.out",
+            },
+          ).fromTo(
+            nameRef.current,
+            { x: 200, opacity: 0, transformOrigin: "center center" },
+            { x: 0, opacity: 1, duration: 2, ease: "power4.out" },
+          );
+        });
+
+      gsap.fromTo(
+        iconsRef.current.children,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          delay: 3,
+          stagger: 0.3,
+          ease: "power2.out",
+        },
+      );
+
+  
+
+      gsap.to(svgRef.current, {
+        opacity: 1,
+        duration: 2,
+        delay: 4,
+        "clip-path": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        ease: "power4.out",
       });
 
-    gsap.fromTo(
-      iconsRef.current.children,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        delay: 3,
-        stagger: 0.3,
-        ease: "power2.out",
-      },
-    );
+      sessionStorage.setItem("hasSeenTheAnimation", true);
+    }
 
     gsap.to(buttonRef.current, {
       y: -5,
@@ -75,27 +92,17 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
       ease: "power1.inOut",
       duration: 0.5,
     });
+  }, [hasSeenTheAnimation]);
 
-    gsap.to(svgRef.current, {
-      opacity: 1,
-      duration: 2,
-      delay: 4,
-      "clip-path": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
-      ease: "power4.out",
-    });
-  }, []);
+  const handleScroll = (sectionRef) => {
+    sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section
-      className="h-[85vh] shadow-2xl md:h-screen bg-cover bg-center bg-no-repeat"
+      className="h-[85vh] bg-cover bg-center bg-no-repeat shadow-2xl md:h-screen"
       style={{ backgroundImage: `url(${backgroundImg})` }}
     >
-      <Header
-        toAboutMe={toAboutMe}
-        toPorjects={toPorjects}
-        toSkills={toSkills}
-        toContact={toContact}
-      />
       <div className="relative flex h-screen flex-col items-center justify-center gap-5">
         <div className="flex flex-col text-center lg:flex-row lg:gap-4">
           <h2
@@ -130,7 +137,7 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
             </button>
           </a>
 
-          <button className="learn-more hidden md:block" onClick={toAboutMe}>
+          <button className="learn-more hidden md:block" onClick={() => handleScroll(aboutRef)}>
             <span className="circle" aria-hidden="true">
               <span className="icon arrow"></span>
             </span>
@@ -139,8 +146,8 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
 
           <button
             className="flex h-10 w-10 items-center justify-center rounded-full bg-[#CA721F] md:hidden"
-            onClick={toAboutMe}
             ref={buttonRef}
+            onClick={() => handleScroll(aboutRef)}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -157,8 +164,12 @@ function Hero({ toAboutMe, toPorjects, toSkills, toContact }) {
 
       <svg
         ref={svgRef}
-        className="absolute bottom-0 h-[150px] opacity-0 md:h-[300px]"
-        style={{ clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }}
+        className={`absolute bottom-0 h-[150px] md:h-[300px] ${hasSeenTheAnimation ? "opacity-1" : "opacity-1"}`}
+        style={
+          !hasSeenTheAnimation
+            ? { clipPath: "polygon(0 100%, 99% 100%, 100% 100%, 0% 100%)" }
+            : { clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)" }
+        }
         width="100%"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
