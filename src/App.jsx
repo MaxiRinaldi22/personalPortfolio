@@ -7,7 +7,7 @@ import {
 import Home from "./app/Home";
 import Header from "./components/Hearder";
 import Projects from "./app/Projects";
-import { useRef } from "react";
+import {  useRef } from "react";
 
 function App() {
   const heroRef = useRef(null);

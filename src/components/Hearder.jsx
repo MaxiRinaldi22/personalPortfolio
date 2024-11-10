@@ -7,26 +7,24 @@ import { HOME_PARTS } from "../util/constants";
 import { gsap } from "gsap";
 
 function Header({ refs }) {
-  const { aboutRef, projectsRef, skillsRef, contactRef } = refs;
+  const { aboutRef, projectsRef, skillsRef, contactRef, heroRef } = refs;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScroll, setIsScroll] = useState(false);
-
-  const mobileProject = useRef(null);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const mobileProject = useRef(null);
   const menuRef = useRef(null);
-
   const location = useLocation().pathname;
 
-  const handleScrol = (sectionRef) => {
+  const handleScroll = (sectionRef) => {
     sectionRef.current.scrollIntoView({ behavior: "smooth" });
   };
-
 
   // Nose que tan necesario es tener estos handles.
   const handleHomeClick = (e) => {
     if (location === "home") {
       e.preventDefault();
     }
+    handleScroll(heroRef);
     setIsMenuOpen(false);
     setMobileMenuOpen(false);
   };
@@ -102,9 +100,9 @@ function Header({ refs }) {
     >
       <nav className="mx-auto flex w-full items-center justify-between py-5 pr-7 lg:px-8">
         <div className="flex lg:flex-1">
-          <a href="#">
+          <button onClick={() => handleScroll(heroRef)}>
             <img alt="" src={logo} className="h-10 w-auto" />
-          </a>
+          </button>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -121,9 +119,11 @@ function Header({ refs }) {
             <li
               className={`flex items-center ${location === "/projects" ? "pr-8" : ""}`}
             >
-              <Link to="/" onClick={handleHomeClick}>
-                <p className="text-xl font-semibold text-[#CB7220]">Home</p>
-              </Link>
+              <button onClick={() => handleScroll(heroRef)}>
+                <Link to="/home">
+                  <p className="text-xl font-semibold text-[#CB7220]">Home</p>
+                </Link>
+              </button>
 
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -153,16 +153,16 @@ function Header({ refs }) {
                         className="text-md block px-4 py-2 font-[500]"
                         onClick={() => {
                           if (item.title === "About") {
-                            handleScrol(aboutRef);
+                            handleScroll(aboutRef);
                             setIsMenuOpen(false);
                           } else if (item.title === "Projects") {
-                            handleScrol(projectsRef);
+                            handleScroll(projectsRef);
                             setIsMenuOpen(false);
                           } else if (item.title === "Skills") {
-                            handleScrol(skillsRef);
+                            handleScroll(skillsRef);
                             setIsMenuOpen(false);
                           } else if (item.title === "Contact") {
-                            handleScrol(contactRef);
+                            handleScroll(contactRef);
                             setIsMenuOpen(false);
                           }
                         }}
@@ -188,11 +188,11 @@ function Header({ refs }) {
         className="lg:hidden"
       >
         <div className="fixed inset-0 z-10" />
-        <DialogPanel className="fixed inset-y-0 right-0 z-10 flex h-80 w-full flex-col gap-6 overflow-y-auto bg-[#20272F] py-5 pl-5 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <DialogPanel className="fixed inset-y-0 right-0 z-10 flex h-80 w-full flex-col gap-6 overflow-y-auto bg-[#20272F] py-5 pl-5 sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center justify-between pr-9">
-            <a href="#">
+            <button onClick={handleHomeClick}>
               <img alt="" src={logo} className="h-10 w-auto" />
-            </a>
+            </button>
             <button
               className="-m-2.5 rounded-md text-white"
               onClick={() => setMobileMenuOpen(false)}
@@ -204,28 +204,39 @@ function Header({ refs }) {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div>
-                <ul className="pr-5 flex flex-col gap-3">
+                <ul className="flex flex-col gap-3 pr-5">
                   <li className="flex items-center">
-                    <Link to="/" className="w-full" onClick={handleHomeClick}>
-                      <p className="text-xl font-semibold text-[#CB7220]">
-                        Home
-                      </p>
-                    </Link>
-                    <button
-                      onClick={() => setIsMenuOpen(!isMenuOpen)}
-                      className="flex h-full w-full items-center justify-end"
-                    >
-                      <svg
-                        className={`pt-1 transition duration-[800ms] ${isMenuOpen ? "-rotate-90" : "rotate-90"}`}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        width={30}
-                        height={30}
-                        fill="rgba(202,114,31,1)"
+                    <button onClick={handleHomeClick}>
+                      <Link
+                        to="/home"
+                        className="w-full"
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
                       >
-                        <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path>
-                      </svg>
+                        <p className="text-xl font-semibold text-[#CB7220]">
+                          Home
+                        </p>
+                      </Link>
                     </button>
+                    {location === "/home" && (
+                      <button
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        className="flex h-full w-full items-center justify-end"
+                      >
+                        <svg
+                          className={`pt-1 transition duration-[800ms] ${isMenuOpen ? "-rotate-90" : "rotate-90"}`}
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 24 24"
+                          width={30}
+                          height={30}
+                          fill="rgba(202,114,31,1)"
+                        >
+                          <path d="M13.1717 12.0007L8.22192 7.05093L9.63614 5.63672L16.0001 12.0007L9.63614 18.3646L8.22192 16.9504L13.1717 12.0007Z"></path>
+                        </svg>
+                      </button>
+                    )}
                     {isMenuOpen && (
                       <ul
                         ref={menuRef}
@@ -237,19 +248,19 @@ function Header({ refs }) {
                               className="text-md justyfy-center flex items-center py-2 font-[400] text-white"
                               onClick={() => {
                                 if (item.title === "About") {
-                                  handleScrol(aboutRef);
+                                  handleScroll(aboutRef);
                                   setMobileMenuOpen(false);
                                   setIsMenuOpen(false);
                                 } else if (item.title === "Projects") {
-                                  handleScrol(projectsRef);
+                                  handleScroll(projectsRef);
                                   setMobileMenuOpen(false);
                                   setIsMenuOpen(false);
                                 } else if (item.title === "Skills") {
-                                  handleScrol(skillsRef);
+                                  handleScroll(skillsRef);
                                   setMobileMenuOpen(false);
                                   setIsMenuOpen(false);
                                 } else if (item.title === "Contact") {
-                                  handleScrol(contactRef);
+                                  handleScroll(contactRef);
                                   setMobileMenuOpen(false);
                                   setIsMenuOpen(false);
                                 }
@@ -262,10 +273,7 @@ function Header({ refs }) {
                       </ul>
                     )}
                   </li>
-                  <li
-                    ref={mobileProject}
-                    // className={`${isMenuOpen ? "mt-[170px]" : ""}`}
-                  >
+                  <li ref={mobileProject}>
                     <Link to="/projects" onClick={handleProjectsClick}>
                       <p className="text-xl font-semibold text-[#CB7220]">
                         Projects

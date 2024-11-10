@@ -5,11 +5,13 @@ import Skills from "../components/Skills";
 import Contanct from "../components/Contact";
 
 function Home({ refs }) {
-  const { aboutRef, projectsRef, skillsRef, contactRef } = refs;
+  const { heroRef, aboutRef, projectsRef, skillsRef, contactRef } = refs;
 
   return (
     <main>
-      <Hero aboutRef={aboutRef}/>
+      <section ref={heroRef}>
+        <Hero aboutRef={aboutRef} />
+      </section>
 
       <section ref={aboutRef}>
         <About />

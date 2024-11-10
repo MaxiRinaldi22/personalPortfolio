@@ -86,7 +86,7 @@ function Hero({ aboutRef }) {
     }
 
     gsap.to(buttonRef.current, {
-      y: -5,
+      y: -10,
       repeat: -1,
       yoyo: true,
       ease: "power1.inOut",
