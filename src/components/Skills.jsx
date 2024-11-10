@@ -77,7 +77,7 @@ const Skills = ({ refprop }) => {
             ref={(el) => (dataRef.current[id] = el)}
           >
             <h2 className="text-xl font-[300] text-white">{info.title}</h2>
-            <div className="lg:gap-15 w-full grid md:min-w-[500px] grid-cols-3 justify-center gap-12 rounded-lg border-b border-t border-[#26292e] bg-[#191e24] p-5 md:px-8 md:py-9 lg:flex">
+            <div className="lg:gap-15 w-full grid md:max-w-[500px] grid-cols-3 justify-center gap-12 rounded-lg border-b border-t border-[#26292e] bg-[#191e24] p-5 md:px-8 md:py-9 lg:flex">
               {info.info.map((service) => (
                 <div
                   key={service.name}
